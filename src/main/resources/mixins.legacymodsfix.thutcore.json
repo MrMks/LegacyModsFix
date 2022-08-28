@@ -1,0 +1,13 @@
+{
+  "package": "com.github.mrmks.mc.lmf.thutcore",
+  "minVersion": "0.6",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.legacymodsfix.refmap.json",
+  "mixins": [
+    "MixinAIThreadManager"
+  ],
+  "client": [
+  ],
+  "server": [
+  ]
+}

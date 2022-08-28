@@ -1,0 +1,15 @@
+{
+  "package": "com.github.mrmks.mc.lmf.ccl",
+  "minVersion": "0.6",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.legacymodsfix.refmap.json",
+  "mixins": [
+    "WorldExtensionAccessor",
+    "WorldExtensionManagerAccessor",
+    "MixinWorldExtensionEventHandler"
+  ],
+  "client": [
+  ],
+  "server": [
+  ]
+}
