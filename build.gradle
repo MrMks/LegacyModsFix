@@ -103,6 +103,7 @@ dependencies {
     compileOnly fg.deobf('_:CodeChickenLib-1.12.2:3.2.3.357:universal')
     compileOnly fg.deobf('_:ForgeMultipart-1.12.2:2.6.2.83:universal')
     compile fg.deobf('_:thutcore-1.12.2:5.21.0')
+    compile fg.deobf('_:cfm:6.3.0-mc1.12.2')
 
     runtimeOnly '_:CodeChickenLib-1.12.2:3.2.3.357-universal'
 

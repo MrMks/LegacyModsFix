@@ -1,0 +1,14 @@
+{
+  "package": "com.github.mrmks.mc.lmf.cfm.ext",
+  "minVersion": "0.6",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.legacymodsfix.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+    "client.MixinClientProxy",
+    "client.MixinMirrorRenderGlobal"
+  ],
+  "server": [
+  ]
+}

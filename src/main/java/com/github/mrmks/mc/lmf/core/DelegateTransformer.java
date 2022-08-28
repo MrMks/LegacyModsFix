@@ -20,27 +20,28 @@ public class DelegateTransformer implements IClassTransformer {
             "club.nsdn.nyasamarailway.NyaSamaRailway",
             "thut.api.entity.ai.AIThreadManager",
             "codechicken.multipart.handler.MultipartMod",
-            "codechicken.lib.CodeChickenLib"
+            "codechicken.lib.CodeChickenLib",
+            "com.mrcrayfish.furniture.MrCrayfishFurnitureMod",
+
     };
     private static final String[] JSON = {
             "mixins.legacymodsfix.nyasama.json",
             "mixins.legacymodsfix.thutcore.json",
             "mixins.legacymodsfix.fmp.json",
-            "mixins.legacymodsfix.ccl.json"
+            "mixins.legacymodsfix.ccl.json",
+            "mixins.legacymodsfix.cfm.json",
+
     };
 
     public DelegateTransformer() {
+
+        if (KLASS.length != JSON.length) throw new IllegalStateException("UNMATCHED SIZE between KLASS and JSON");
+
         count = 0;
-        if (KLASS.length == JSON.length) {
-            size = KLASS.length;
-            this.klass = KLASS;
-            this.json = JSON;
-            this.flags = new boolean[size];
-        } else {
-            this.size = 0;
-            this.klass = this.json = new String[]{};
-            this.flags = new boolean[]{};
-        }
+        size = KLASS.length;
+        this.klass = KLASS;
+        this.json = JSON;
+        this.flags = new boolean[size];
     }
 
     @Override
