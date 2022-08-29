@@ -25,12 +25,12 @@ public class DelegateTransformer implements IClassTransformer {
             "mod.chiselsandbits.core.ChiselsAndBits"
     };
     private static final String[] JSON = {
-            "mixins.legacymodsfix.nyasama.json",
-            "mixins.legacymodsfix.thutcore.json",
-            "mixins.legacymodsfix.fmp.json",
-            "mixins.legacymodsfix.ccl.json",
-            "mixins.legacymodsfix.cfm.json",
-            "mixins.legacymodsfix.cab.json"
+            "nyasama",
+            "thutcore",
+            "fmp",
+            "ccl",
+            "cfm",
+            "cab"
     };
 
     public DelegateTransformer() {
@@ -53,7 +53,7 @@ public class DelegateTransformer implements IClassTransformer {
                     flags[i] = true;
                     count++;
 
-                    Mixins.addConfiguration(json[i]);
+                    Mixins.addConfiguration("mixins.legacymodsfix." + json[i] + ".json");
                     rerunMixin();
                     break;
                 }
