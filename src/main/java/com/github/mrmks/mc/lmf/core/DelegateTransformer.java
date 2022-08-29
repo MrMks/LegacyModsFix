@@ -22,7 +22,7 @@ public class DelegateTransformer implements IClassTransformer {
             "codechicken.multipart.handler.MultipartMod",
             "codechicken.lib.CodeChickenLib",
             "com.mrcrayfish.furniture.MrCrayfishFurnitureMod",
-
+            "mod.chiselsandbits.core.ChiselsAndBits"
     };
     private static final String[] JSON = {
             "mixins.legacymodsfix.nyasama.json",
@@ -30,7 +30,7 @@ public class DelegateTransformer implements IClassTransformer {
             "mixins.legacymodsfix.fmp.json",
             "mixins.legacymodsfix.ccl.json",
             "mixins.legacymodsfix.cfm.json",
-
+            "mixins.legacymodsfix.cab.json"
     };
 
     public DelegateTransformer() {

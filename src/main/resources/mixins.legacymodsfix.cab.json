@@ -1,0 +1,13 @@
+{
+  "package": "com.github.mrmks.mc.lmf.cab",
+  "minVersion": "0.6",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mixins.legacymodsfix.refmap.json",
+  "mixins": [
+    "MixinNetworkRouter"
+  ],
+  "client": [
+  ],
+  "server": [
+  ]
+}
