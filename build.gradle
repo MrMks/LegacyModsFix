@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-version = "0.0.1-b2"
+version = "0.0.2-b3"
 group = "com.github.mrmks.mc" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "LegacyModsFix"
 
