@@ -24,6 +24,7 @@ public class DelegateTransformer implements IClassTransformer {
             "codechicken.lib.CodeChickenLib",
             "com.mrcrayfish.furniture.MrCrayfishFurnitureMod",
             "mod.chiselsandbits.core.ChiselsAndBits",
+            "moe.plushie.armourers_workshop.ArmourersWorkshop"
     };
     private static final String[] JSON = {
             "nyasama",
@@ -32,7 +33,8 @@ public class DelegateTransformer implements IClassTransformer {
             "fmp",
             "ccl",
             "cfm",
-            "cab"
+            "cab",
+            "amws"
     };
 
     public DelegateTransformer() {

@@ -107,6 +107,7 @@ dependencies {
     compile fg.deobf('_:chiselsandbits:14.33')
     compile fg.deobf('_:NyaSamaCompletePack-v2-mcg:201001:a')
     compile fg.deobf('_:NyaSamaCompletePack-v2-mcg:201001:b')
+    compile fg.deobf('_:Armourers-Workshop-1.12.2:0.51.0')
 
     runtimeOnly '_:CodeChickenLib-1.12.2:3.2.3.357-universal'
 
