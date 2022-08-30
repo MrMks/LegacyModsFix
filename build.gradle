@@ -105,6 +105,8 @@ dependencies {
     compile fg.deobf('_:thutcore-1.12.2:5.21.0')
     compile fg.deobf('_:cfm:6.3.0-mc1.12.2')
     compile fg.deobf('_:chiselsandbits:14.33')
+    compile fg.deobf('_:NyaSamaCompletePack-v2-mcg:201001:a')
+    compile fg.deobf('_:NyaSamaCompletePack-v2-mcg:201001:b')
 
     runtimeOnly '_:CodeChickenLib-1.12.2:3.2.3.357-universal'
 

@@ -18,14 +18,16 @@ public class DelegateTransformer implements IClassTransformer {
 
     private static final String[] KLASS = {
             "club.nsdn.nyasamarailway.NyaSamaRailway",
+            "cn.ac.nya.NyaSamaLib",
             "thut.api.entity.ai.AIThreadManager",
             "codechicken.multipart.handler.MultipartMod",
             "codechicken.lib.CodeChickenLib",
             "com.mrcrayfish.furniture.MrCrayfishFurnitureMod",
-            "mod.chiselsandbits.core.ChiselsAndBits"
+            "mod.chiselsandbits.core.ChiselsAndBits",
     };
     private static final String[] JSON = {
             "nyasama",
+            "nyasamalib",
             "thutcore",
             "fmp",
             "ccl",
