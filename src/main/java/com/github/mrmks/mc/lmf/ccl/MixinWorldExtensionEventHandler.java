@@ -6,11 +6,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.event.world.ChunkWatchEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import org.objectweb.asm.Opcodes;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -23,11 +21,12 @@ public abstract class MixinWorldExtensionEventHandler {
     }
 
     /**
-     * @author mrmks
-     * @reason remove players from the Map to release memories.
+     * Add this method back on server side then players can unwatch those chunks
+     * <p>
+     * Not sure what will occur, test it later
      */
     @SubscribeEvent
-    @Overwrite(remap = false)
+    @Unique(silent = true)
     public void onChunkUnWatch(ChunkWatchEvent.UnWatch event) {
         Chunk chunk = event.getPlayer().world.getChunkFromChunkCoords(event.getChunk().x, event.getChunk().z);
         WorldExtension[] var3 = WorldExtensionManagerAccessor.callGetExtensions(event.getPlayer().world);
