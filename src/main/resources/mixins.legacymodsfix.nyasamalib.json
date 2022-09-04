@@ -4,10 +4,10 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "mixins.legacymodsfix.refmap.json",
   "mixins": [
-  ],
-  "client": [
     "MixinTrain",
     "MixinUtility"
+  ],
+  "client": [
   ],
   "server": [
   ]

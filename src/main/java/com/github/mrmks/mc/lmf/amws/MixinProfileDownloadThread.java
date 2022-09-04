@@ -19,7 +19,7 @@ public abstract class MixinProfileDownloadThread implements Runnable {
     private GameProfileCache.IGameProfileCallback callback;
 
     @Shadow(remap = false)
-    abstract GameProfile fillProfileProperties(GameProfile gameProfile);
+    protected abstract GameProfile fillProfileProperties(GameProfile gameProfile);
 
     /**
      * @author mrmks
