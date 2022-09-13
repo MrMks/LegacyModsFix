@@ -15,6 +15,8 @@ import java.util.Map;
 public class FMLPluginImpl implements IFMLLoadingPlugin {
 
     static {
+        // this is used in development, use MixinTweaker in production;
+        // init mixin asap
         MixinBootstrap.init();
     }
 

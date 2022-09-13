@@ -71,24 +71,31 @@ public class DelegateTransformer implements IClassTransformer {
 
     private static void rerunMixin() {
         try {
-            Class<?> klass = Class.forName("org.spongepowered.asm.mixin.transformer.Proxy");
-            Field field = klass.getDeclaredField("transformer");
+
+            // We have to use reflections here to let configs be parsed.
+            // To be clear, re-select the currentEnvironment is allowed
+            // if the processor transformed no classes but there are still
+            // some classes are prepared.
+            // It is exactly what checkSelect does.
+            // Then what if transformed classes is 0? It should don't matter.
+
+            MixinEnvironment env = MixinEnvironment.getCurrentEnvironment();
+            Object tmp = env.getActiveTransformer();
+
+            if (tmp == null) return;
+            Class<?> klass = tmp.getClass(); //Class.forName("org.spongepowered.asm.mixin.transformer.MixinTransformer");
+            Field field = klass.getDeclaredField("processor");
 
             field.setAccessible(true);
-            Object transformer = field.get(null);
+            tmp = field.get(tmp);
 
-            klass = Class.forName("org.spongepowered.asm.mixin.transformer.MixinTransformer");
-            field = klass.getDeclaredField("processor");
-
-            field.setAccessible(true);
-            Object processor = field.get(transformer);
-
-            klass = Class.forName("org.spongepowered.asm.mixin.transformer.MixinProcessor");
+            if (tmp == null) return;
+            klass = tmp.getClass(); //Class.forName("org.spongepowered.asm.mixin.transformer.MixinProcessor");
             Method method = klass.getDeclaredMethod("select", MixinEnvironment.class);
 
             method.setAccessible(true);
-            method.invoke(processor, MixinEnvironment.getCurrentEnvironment());
-        } catch (ClassNotFoundException | NoSuchMethodException | NoSuchFieldException | InvocationTargetException | IllegalAccessException e) {
+            method.invoke(tmp, env);
+        } catch (NoSuchMethodException | NoSuchFieldException | InvocationTargetException | IllegalAccessException e) {
             // no-op
         }
     }

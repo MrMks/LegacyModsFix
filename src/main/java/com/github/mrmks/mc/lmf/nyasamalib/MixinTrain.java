@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 public class MixinTrain {
     private WeakReference<World> worldRef;
 
-    @Redirect(method = "<init>", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lorg/thewdj/linkage/core/Train;world:Lnet/minecraft/world/World;"), remap = false)
+    @Redirect(method = "<init>(Lnet/minecraft/entity/item/EntityMinecart;)V", at = @At(value = "FIELD", opcode = Opcodes.PUTFIELD, target = "Lorg/thewdj/linkage/core/Train;world:Lnet/minecraft/world/World;"), remap = false)
     private void setWorldValueInit(Train train, World world) {
         this.worldRef = new WeakReference<>(world);
     }

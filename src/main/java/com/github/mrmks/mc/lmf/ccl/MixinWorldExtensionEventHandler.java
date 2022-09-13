@@ -23,14 +23,16 @@ public abstract class MixinWorldExtensionEventHandler {
     /**
      * Add this method back on server side then players can unwatch those chunks
      * <p>
-     * Not sure what will occur, test it later
      */
     @SubscribeEvent
     @Unique(silent = true)
     public void onChunkUnWatch(ChunkWatchEvent.UnWatch event) {
-        Chunk chunk = event.getPlayer().world.getChunkFromChunkCoords(event.getChunk().x, event.getChunk().z);
+        Chunk chunk = event.getChunkInstance();
+
+        if (chunk == null) return;
         WorldExtension[] var3 = WorldExtensionManagerAccessor.callGetExtensions(event.getPlayer().world);
 
+        if (var3 == null) return;
         for (WorldExtension extension : var3) {
             ((WorldExtensionAccessor) extension).callUnwatchChunk(chunk, event.getPlayer());
         }
