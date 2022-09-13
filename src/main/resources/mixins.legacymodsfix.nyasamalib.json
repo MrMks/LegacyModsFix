@@ -5,6 +5,7 @@
   "refmap": "mixins.legacymodsfix.refmap.json",
   "mixins": [
     "MixinTrain",
+    "MixinTrainManager",
     "MixinUtility"
   ],
   "client": [
