@@ -3,6 +3,7 @@ package com.github.mrmks.mc.lmf.core;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.launch.MixinBootstrap;
+import org.spongepowered.asm.mixin.Mixins;
 import org.spongepowered.asm.service.IMixinService;
 import org.spongepowered.asm.service.ITransformerProvider;
 import org.spongepowered.asm.service.MixinService;
@@ -18,6 +19,7 @@ public class FMLPluginImpl implements IFMLLoadingPlugin {
         // this is used in development, use MixinTweaker in production;
         // init mixin asap
         MixinBootstrap.init();
+        Mixins.addConfiguration("mixins.legacymodsfix.debug.json");
     }
 
     @Override
