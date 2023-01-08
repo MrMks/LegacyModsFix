@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "client.MixinClientProxy",
+    "client.MixinMirrorRenderer",
     "client.MixinMirrorRenderGlobal"
   ],
   "server": [

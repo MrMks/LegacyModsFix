@@ -15,7 +15,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-version = "0.0.3-b9-debug"
+version = "0.0.4-b10"
 group = "com.github.mrmks.mc" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "LegacyModsFix"
 
@@ -146,6 +146,7 @@ tasks.withType(JavaCompile) {
 }
 
 jar {
+//    archiveClassifier.set "trace"
     manifest.attributes([
             "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
             "FMLCorePlugin": "com.github.mrmks.mc.lmf.core.FMLPluginImpl",
