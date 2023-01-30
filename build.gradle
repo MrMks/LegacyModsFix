@@ -16,7 +16,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-version = '0.0.5-b13'
+version = '0.0.6-b14'
 group = 'com.github.mrmks.mc' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'LegacyModsFix'
 
@@ -126,6 +126,13 @@ dependencies {
         exclude module: "commons-io"
     }
     annotationProcessor 'org.spongepowered:mixin:0.8.3:processor'
+}
+
+compileJava {
+    inputs.property "version", project.version
+//    filesMatching 'mcmod.info', {
+//        expand 'version': project.version
+//    }
 }
 
 processResources {

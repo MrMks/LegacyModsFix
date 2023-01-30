@@ -12,7 +12,7 @@ public class LMFModContainer extends DummyModContainer {
         super(new ModMetadata());
         ModMetadata metadata = getMetadata();
         metadata.modId = "legacy_mod_fix";
-        metadata.version = "0.0.5.13";
+        metadata.version = "0.0.6.14";
         metadata.name = "LegacyModFix";
         metadata.screenshots=new String[0];
         metadata.logoFile="";
