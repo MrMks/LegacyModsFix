@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(NBTBlobConverter.class)
 public class MixinNBTBlobConvert {
 
-    private static final String NBT_VERSIONED_FORMAT = "f";
+    private static final String NBT_VERSIONED_FORMAT = "Xf";
 
     @Inject(
             method = "writeChisleData",
@@ -34,7 +34,9 @@ public class MixinNBTBlobConvert {
     )
     public int redirectGetFormat(VoxelBlobStateReference reference, NBTTagCompound compound) {
         if (compound.hasKey(NBT_VERSIONED_FORMAT, 3)) {
-            return compound.getInteger(NBT_VERSIONED_FORMAT);
+            int ret = compound.getInteger(NBT_VERSIONED_FORMAT);
+            ((VoxelBlobStateInstanceAccessor) (Object) reference.getInstance()).setFormat(ret);
+            return ret;
         } else return reference.getFormat();
     }
 
