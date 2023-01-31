@@ -29,7 +29,8 @@ public class FMLPluginImpl implements IFMLLoadingPlugin {
     @Override
     public String[] getASMTransformerClass() {
         String[] ary = new String[]{
-                "com.github.mrmks.mc.lmf.core.DelegateTransformer"
+                "com.github.mrmks.mc.lmf.core.DelegateTransformer",
+                "com.github.mrmks.mc.lmf.core.VisitorTransformer"
         };
         return excludeDelegate(ary);
     }

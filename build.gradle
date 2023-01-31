@@ -16,7 +16,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-version = '0.0.6-b15'
+version = '0.0.6-b16'
 group = 'com.github.mrmks.mc' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'LegacyModsFix'
 
@@ -41,6 +41,8 @@ minecraft {
             property 'fml.coreMods.load', 'com.github.mrmks.mc.lmf.core.FMLPluginImpl'
 
             property 'fml.debugAccessTransformer', 'true'
+
+            property 'mrmks.lmf.saveDump', "./dump"
 
             // // CodeChickenLib compat
             property 'net.minecraftforge.gradle.GradleStart.srgDir', "$fg2CompatDir/1.12.2/srgs"

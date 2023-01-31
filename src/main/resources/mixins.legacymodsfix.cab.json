@@ -9,8 +9,7 @@
     "VoxelBlobStateInstanceAccessor"
   ],
   "client": [
-    "MixinVoxelBlobStateReference",
-    "MixinModelUtil"
+    "MixinVoxelBlobStateReference"
   ],
   "server": [
   ]
