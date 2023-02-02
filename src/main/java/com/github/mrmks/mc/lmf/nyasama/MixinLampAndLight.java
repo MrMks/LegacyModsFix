@@ -3,6 +3,9 @@ package com.github.mrmks.mc.lmf.nyasama;
 import club.nsdn.nyasamaoptics.block.BlockAdsorptionLamp;
 import club.nsdn.nyasamaoptics.block.BlockFluorescentLamp;
 import club.nsdn.nyasamaoptics.block.BlockSpotLight;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.MapColor;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.math.AxisAlignedBB;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -13,9 +16,13 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Mixin(value = {BlockAdsorptionLamp.class, BlockFluorescentLamp.class, BlockSpotLight.class})
-public class MixinLampAndLight {
+public class MixinLampAndLight extends Block {
 
     private static final Map<AxisAlignedBB, AxisAlignedBB> AABBsMap = new ConcurrentHashMap<>();
+
+    public MixinLampAndLight(Material blockMaterialIn, MapColor blockMapColorIn) {
+        super(blockMaterialIn, blockMapColorIn);
+    }
 
     @Inject(
             method = "getAABB",
@@ -26,6 +33,6 @@ public class MixinLampAndLight {
     private static void conGetAABB(double x1, double y1, double z1, double x2, double y2, double z2, CallbackInfoReturnable<AxisAlignedBB> cir) {
         AxisAlignedBB aabb = new AxisAlignedBB(x1, y1, z1, x2, y2, z2);
         AxisAlignedBB i = AABBsMap.putIfAbsent(aabb, aabb);
-        cir.setReturnValue(i);
+        cir.setReturnValue(i == null ? aabb : i);
     }
 }

@@ -39,7 +39,7 @@ public class MixinNBTBlobConvert {
             ((VoxelBlobStateInstanceAccessor) (Object) reference.getInstance()).setFormat(ret);
             return ret;
         } else {
-            tile.markDirty();
+            if (tile != null) tile.markDirty();
             return reference.getFormat();
         }
     }
