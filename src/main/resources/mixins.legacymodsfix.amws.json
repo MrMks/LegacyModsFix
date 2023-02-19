@@ -5,7 +5,8 @@
   "refmap": "mixins.legacymodsfix.refmap.json",
   "mixins": [
     "GameProfileCacheAccessor",
-    "MixinProfileDownloadThread"
+    "MixinProfileDownloadThread",
+    "MixinTileEntitySkinningTable"
   ],
   "client": [
   ],
