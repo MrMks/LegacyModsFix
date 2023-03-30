@@ -1,8 +1,14 @@
 package com.github.mrmks.mc.lmf.nyasama;
 
+import club.nsdn.nyasamaelectricity.block.BlockCatenary;
+import club.nsdn.nyasamaelectricity.block.BlockHVSign;
+import club.nsdn.nyasamaelectricity.block.BlockInsulator;
+import club.nsdn.nyasamaelectricity.block.BlockShelf;
 import club.nsdn.nyasamaoptics.block.BlockAdsorptionLamp;
 import club.nsdn.nyasamaoptics.block.BlockFluorescentLamp;
 import club.nsdn.nyasamaoptics.block.BlockSpotLight;
+import club.nsdn.nyasamarailway.block.BlockGlassShield;
+import club.nsdn.nyasamarailway.block.BlockGlassShieldCorner;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
@@ -15,12 +21,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Mixin(value = {BlockAdsorptionLamp.class, BlockFluorescentLamp.class, BlockSpotLight.class})
-public class MixinLampAndLight extends Block {
+@Mixin(value = {
+        BlockAdsorptionLamp.class, // optics
+        BlockFluorescentLamp.class,
+        BlockSpotLight.class,
+        BlockCatenary.class, // electricity
+        BlockHVSign.class,
+        BlockInsulator.class,
+        BlockShelf.class,
+        BlockGlassShield.class, // railway
+        BlockGlassShieldCorner.class
+})
+public class MixinNyasamaBlocks extends Block {
 
     private static final Map<AxisAlignedBB, AxisAlignedBB> AABBsMap = new ConcurrentHashMap<>();
 
-    public MixinLampAndLight(Material blockMaterialIn, MapColor blockMapColorIn) {
+    public MixinNyasamaBlocks(Material blockMaterialIn, MapColor blockMapColorIn) {
         super(blockMaterialIn, blockMapColorIn);
     }
 

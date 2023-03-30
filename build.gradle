@@ -16,7 +16,7 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-version = '0.0.8-b19'
+version = '0.0.9-b20'
 group = 'com.github.mrmks.mc' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'LegacyModsFix'
 
@@ -106,16 +106,16 @@ dependencies {
 
     compileOnly fg.deobf('_:CodeChickenLib-1.12.2:3.2.3.357:universal')
     compileOnly fg.deobf('_:ForgeMultipart-1.12.2:2.6.2.83:universal')
-    compile fg.deobf('_:thutcore-1.12.2:5.21.0')
-    compile fg.deobf('_:cfm:6.3.0-mc1.12.2')
+    compileOnly fg.deobf('_:thutcore-1.12.2:5.21.0')
+    compileOnly fg.deobf('_:cfm:6.3.0-mc1.12.2')
     compileOnly fg.deobf('_:chiselsandbits:14.33')
     compileOnly fg.deobf('_:NyaSamaCompletePack-v2-mcg:201001:a')
     compileOnly fg.deobf('_:NyaSamaCompletePack-v2-mcg:201001:b')
-    compile fg.deobf('_:Armourers-Workshop-1.12.2:0.51.0')
+    compileOnly fg.deobf('_:Armourers-Workshop-1.12.2:0.51.0')
     compileOnly fg.deobf('_:touhoulittlemaid-1.12.2:1.2.5:release')
     compileOnly fg.deobf('_:foamfix:0.10.8-1.12.2')
 
-    runtimeOnly '_:CodeChickenLib-1.12.2:3.2.3.357-universal'
+//    runtimeOnly '_:CodeChickenLib-1.12.2:3.2.3.357-universal'
 //    runtimeOnly '_:chiselsandbits-14.33'
 
     shade ('org.spongepowered:mixin:0.8.3') {
@@ -144,7 +144,7 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = "UTF-8"
 }
 
@@ -157,7 +157,7 @@ jar {
     }
 }
 
-task shadowJar(type: Jar) {
+tasks.register('shadowJar', Jar) {
     archiveClassifier.set "fat"
     from {
         project.configurations.shade.collect {
