@@ -1,3 +1,5 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
 buildscript {
     repositories {
         maven { url = "https://maven.minecraftforge.net/" }
@@ -16,9 +18,17 @@ apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'java'
 
 //Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-version = '0.0.9-b20'
+version = '0.0.9-b21'
 group = 'com.github.mrmks.mc' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'LegacyModsFix'
+
+ext {
+    // will this runs on linux or others? i don't know.
+//    projectClasspath = file("$buildDir/bin/main")
+    filterJavaSource = file("$buildDir/tmp/javaSource")
+//    modListFile = file("$buildDir/tmp/mod_list.json").absoluteFile
+//    modRepository = file("$buildDir/tmp/mods").absoluteFile
+}
 
 //java.toolchain.languageVersion = JavaLanguageVersion.of(8)
 
@@ -130,11 +140,21 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.3:processor'
 }
 
+tasks.register('makeJavaSources', Sync) {
+    inputs.property 'version', version
+
+    from sourceSets.main.java
+    include '**/LMFModContainer.java'
+    filter ReplaceTokens, tokens: [version: version.toString().replace('-b', '.')]
+    into filterJavaSource
+}
+
 compileJava {
-    inputs.property "version", project.version
-//    filesMatching 'mcmod.info', {
-//        expand 'version': project.version
-//    }
+    dependsOn 'makeJavaSources'
+    source += filterJavaSource
+    exclude {
+        !it.isDirectory() && !it.file.path.contains(filterJavaSource.name) && (it.name == 'LMFModContainer.java')
+    }
 }
 
 processResources {
